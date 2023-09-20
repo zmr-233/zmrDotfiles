@@ -1,0 +1,11 @@
+[user]
+	email = zmr_233@outlook.com
+	name = zmr466
+[core]
+	editor = vim
+[diff]
+	tool = vimdiff
+[alias]
+	lg = log --decorate --oneline --graph --all --color=always
+	ss = status -s
+	lgg = !sh -c \"git log --decorate --oneline --graph --all --color=always | cat\"
