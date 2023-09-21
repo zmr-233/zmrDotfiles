@@ -19,7 +19,7 @@
     - gcc
     - clang-tidy
     - cppcheck
-    
+
     安装方法：不要使用Vim插件管理器！！使用 Vim 8+ 的原生插件管理安装 linting 插件
 4. ALE安装方法
     1. 安装ALE & clang-format
@@ -93,32 +93,32 @@
     - `powerlevel10k/powerlevel10k`: 主题
         ```bash
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-        
+
         # powerline font字体
         sudo apt-get install fonts-powerline
-        
+
         # ~/.zshrc编辑：
         ZSH_THEME="powerlevel10k/powerlevel10k"
-        
+
         # 重新配置10k
         p10k configure
 
         # Install Dracula theme for GNOME terminal
-        ``` 
+        ```
     - `autojump`: 插件
     - `zsh-autosuggestions`: 插件
         ```bash
-        git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions 
-        ``` 
+        git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+        ```
     - `zsh-syntax-highlighting`: 插件
         ```bash
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-        ``` 
+        ```
     - 添加插件列表vim ~/.zshrc，插件之间用空格分开
         ```bash
         # Example format: plugins=(rails git textmate ruby lighthouse)
         plugins=(git autojump zsh-autosuggestions zsh-syntax-highlighting)
-        ``` 
+        ```
     安装方法：首先，确保已安装[oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)，然后根据各插件的GitHub仓库说明来安装。
 
 5. 创建符号链接的方法:
@@ -148,7 +148,13 @@
     ```bash
     # 增加了sudoperf ，作为sudo perf的替代品
     $ sudoperf
-    $ perf 
+    $ perf
     # .proxyrc中增加别名，用于sudo保留代理
     $ sudop
     ```
+
+7. `.tmux.conf`包含了一些有用的按键映射
+	- <C-a> 代替Ctrl+b
+	- h/j/k/l 代替方向键
+	- 复制模式为Vim风格
+	- 增加鼠标支持
