@@ -130,3 +130,19 @@ source ~/.proxyrc
 # sudoperf
 export PATH=$PATH:/home/zmr466/WSL2-Linux-Kernel/tools/perf
 alias sudoperf='sudo env "PATH=$PATH:/home/zmr466/WSL2-Linux-Kernel/tools/perf" perf'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/zmr466/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/zmr466/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/zmr466/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/zmr466/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
