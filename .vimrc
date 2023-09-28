@@ -1,107 +1,77 @@
-" 用于创建linting插件的部分，使用clang和gcc
+" 用于配置 ALE 插件的 linting 选项，使用 clang 和 gcc
 let g:ale_linters = {
 \   'c': ['clang', 'gcc', 'clang-tidy', 'cppcheck'],
 \   'cpp': ['clang', 'gcc', 'clang-tidy', 'cppcheck'],
 \}
 
+" 配置 ALE 插件的修复器选项
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'c': ['clang-format'],
 \   'cpp': ['clang-format'],
 \}
 
+" 保存时自动修复
 let g:ale_fix_on_save = 1
 
-" imap
+" 在插入模式下映射 kj 为 <esc>
 imap kj <esc>
-" Set tab >> char
+
+" 设置缩进宽度
 set shiftwidth=4
 set tabstop=4
 
-" Auto tab for C/C++
-" set cindent
-" 如上，当开启clang-format的时候，关闭自动缩进
+" 为 C/C++ 配置自动缩进
+" 当启用 clang-format 时，关闭自动缩进
 
-" If auto tab for Python:
-" set filetype=python & set smartident
-
-" Comments in Vimscript start with a `"`.
-
-" If you open this file in Vim, it'll be syntax highlighted for you.
-
-" Vim is based on Vi. Setting `nocompatible` switches from the default
-" Vi-compatibility mode and enables useful Vim functionality. This
-" configuration option turns out not to be necessary for the file named
-" '~/.vimrc', because Vim automatically enters nocompatible mode if that file
-" is present. But we're including it here just in case this config file is
-" loaded some other way (e.g. saved as `foo`, and then Vim started with
-" `vim -u foo`).
+" 设置 vim 为非兼容模式，开启 Vim 的功能
 set nocompatible
 
-" Turn on syntax highlighting.
+" 开启语法高亮
 syntax on
 
-" Disable the default Vim startup message.
+" 禁用 Vim 默认的启动消息
 set shortmess+=I
 
-" Show line numbers.
+" 显示行号
 set number
+set relativenumber  " 同时开启相对行号模式
 
-" This enables relative line numbering mode. With both number and
-" relativenumber enabled, the current line shows the true line number, while
-" all other lines (above and below) are numbered relative to the current line.
-" This is useful because you can tell, at a glance, what count is needed to
-" jump up or down to a particular line, by {count}k to go up or {count}j to go
-" down.
-set relativenumber
-
-" Always show the status line at the bottom, even if you only have one window open.
+" 总是显示状态栏
 set laststatus=2
 
-" The backspace key has slightly unintuitive behavior by default. For example,
-" by default, you can't backspace before the insertion point set with 'i'.
-" This configuration makes backspace behave more reasonably, in that you can
-" backspace over anything.
+" 配置退格键的行为
 set backspace=indent,eol,start
 
-" By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
-" shown in any window) that has unsaved changes. This is to prevent you from "
-" forgetting about unsaved changes and then quitting e.g. via `:qa!`. We find
-" hidden buffers helpful enough to disable this protection. See `:help hidden`
-" for more information on this.
+" 允许隐藏含有未保存更改的缓冲区
 set hidden
 
-" This setting makes search case-insensitive when all characters in the string
-" being searched are lowercase. However, the search becomes case-sensitive if
-" it contains any capital letters. This makes searching more convenient.
-set ignorecase
-set smartcase
+" 搜索相关配置
+set ignorecase  " 搜索时忽略大小写
+set smartcase   " 如果搜索包含大写字母，则进行大小写敏感搜索
+set incsearch   " 启用输入即搜
 
-" Enable searching as you type, rather than waiting till you press enter.
-set incsearch
+" 禁用一些无用/烦人的默认键绑定
+nmap Q <Nop>  " 禁用 'Q' 键进入 Ex 模式
 
-" Unbind some useless/annoying default key bindings.
-nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
-
-" Disable audible bell because it's annoying.
+" 禁用声音铃声
 set noerrorbells visualbell t_vb=
 
-" Enable mouse support. You should avoid relying on this too much, but it can
-" sometimes be convenient.
+" 启用鼠标支持
 set mouse+=a
 
-" Try to prevent bad habits like using the arrow keys for movement. This is
-" not the only possible bad habit. For example, holding down the h/j/k/l keys
-" for movement, rather than using more efficient movement commands, is also a
-" bad habit. The former is enforceable through a .vimrc, while we don't know
-" how to prevent the latter.
-" Do this in normal mode...
+" 试图防止一些不良习惯，例如使用箭头键进行移动
 nnoremap <Left>  :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up>    :echoe "Use k"<CR>
 nnoremap <Down>  :echoe "Use j"<CR>
-" ...and in insert mode
 inoremap <Left>  <ESC>:echoe "Use h"<CR>
 inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
+
+" 定义一个新的 Vim 命令 Cv，用于将指定范围的行复制到剪贴板
+command! -range Cv <line1>,<line2>w !iconv -f utf-8 -t utf-16le | clip.exe
+
+" 在 Visual 模式下，为选中的文本定义一个快捷键 <Leader>c，用于复制到剪贴板
+vnoremap <Leader>c :w !iconv -f utf-8 -t utf-16le \| clip.exe<CR>

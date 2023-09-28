@@ -158,3 +158,23 @@
 	- h/j/k/l 代替方向键
 	- 复制模式为Vim风格
 	- 增加鼠标支持
+
+8. 新增IP_WslOnWin.sh脚本：
+	- 用于自动显示WSL2在宿主主机上的ip地址
+	- ipconfig显示的WSL2地址，实际上是win主机在该网络下的ip地址，而不是wsl在该网络下的地址
+
+---
+## v3.0大更新
+### |.zshrc更新
+1. 新增IP_WslOnWin.sh脚本：
+	- 每次启动时用于自动显示WSL2在宿主主机上的ip地址
+	- ipconfig显示的WSL2地址，实际上是win主机在该网络下的ip地址，而不是wsl在该网络下的地址
+
+2. 增加了wclip命令，直接一键复制到剪贴板
+    ```bash
+    $ cat 1_text | wclip
+    ```
+
+### |.vimrc更新
+1. `:Cv` `<leader>c`可视模式下复制
+   - UTF-8 转换为 UTF-16LE, 因为win使用16LE，因此剪贴板需要转换
