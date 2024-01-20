@@ -9,3 +9,5 @@
 	lg = log --decorate --oneline --graph --all --color=always
 	ss = status -s
 	lgg = !sh -c \"git log --decorate --oneline --graph --all --color=always | cat\"
+[http]
+	postBuffer = 524288000

@@ -58,3 +58,17 @@ source ~/IP_WslOnWin.sh
 
 # 添加 wclip.sh 到 PATH (用于管道运算符的 win-clip 复制脚本)
 export PATH="$PATH:/home/zmr466/zmrDotfiles"
+
+# 检查 CUDA Toolki工具链目录是否存在
+if [ -d "/usr/local/cuda-12.3/bin" ]; then
+    export PATH="/usr/local/cuda-12.3/bin:$PATH"
+fi
+
+# 检查 CUDA lib64 目录是否存在
+if [ -d "/usr/local/cuda-12.3/lib64" ]; then
+    export LD_LIBRARY_PATH="/usr/local/cuda-12.3/lib64:$LD_LIBRARY_PATH"
+    # 注意：理想状况应当放在/etc/ld.so.conf 文件中，然后运行ldconfig来更新
+fi
+
+# 注意：如果要卸载CUDA工具集，可以：
+# 运行位于 /usr/local/cuda-12.3/bin 目录下的 cuda-uninstaller

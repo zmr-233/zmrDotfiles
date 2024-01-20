@@ -106,6 +106,9 @@
         # Install Dracula theme for GNOME terminal
         ```
     - `autojump`: 插件
+		```bash
+		sudo apt-get install autojump
+		```
     - `zsh-autosuggestions`: 插件
         ```bash
         git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
