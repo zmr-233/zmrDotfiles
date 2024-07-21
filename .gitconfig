@@ -11,3 +11,5 @@
 	lgg = !sh -c \"git log --decorate --oneline --graph --all --color=always | cat\"
 [http]
 	postBuffer = 524288000
+[color]
+	ui = true

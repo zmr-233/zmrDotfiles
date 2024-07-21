@@ -60,15 +60,15 @@ set noerrorbells visualbell t_vb=
 " 启用鼠标支持
 set mouse+=a
 
-" 试图防止一些不良习惯，例如使用箭头键进行移动
-nnoremap <Left>  :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up>    :echoe "Use k"<CR>
-nnoremap <Down>  :echoe "Use j"<CR>
-inoremap <Left>  <ESC>:echoe "Use h"<CR>
-inoremap <Right> <ESC>:echoe "Use l"<CR>
-inoremap <Up>    <ESC>:echoe "Use k"<CR>
-inoremap <Down>  <ESC>:echoe "Use j"<CR>
+" " 试图防止一些不良习惯，例如使用箭头键进行移动
+" nnoremap <Left>  :echoe "Use h"<CR>
+" nnoremap <Right> :echoe "Use l"<CR>
+" nnoremap <Up>    :echoe "Use k"<CR>
+" nnoremap <Down>  :echoe "Use j"<CR>
+" inoremap <Left>  <ESC>:echoe "Use h"<CR>
+" inoremap <Right> <ESC>:echoe "Use l"<CR>
+" inoremap <Up>    <ESC>:echoe "Use k"<CR>
+" inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
 " 定义一个新的 Vim 命令 Cv，用于将指定范围的行复制到剪贴板
 command! -range Cv <line1>,<line2>w !iconv -f utf-8 -t utf-16le | clip.exe

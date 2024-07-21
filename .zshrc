@@ -59,6 +59,10 @@ source ~/IP_WslOnWin.sh
 # 添加 wclip.sh 到 PATH (用于管道运算符的 win-clip 复制脚本)
 export PATH="$PATH:/home/zmr466/zmrDotfiles"
 
+
+# .zshrc v4.0部分
+
+
 # 检查 CUDA Toolki工具链目录是否存在
 if [ -d "/usr/local/cuda-12.3/bin" ]; then
     export PATH="/usr/local/cuda-12.3/bin:$PATH"
@@ -72,3 +76,39 @@ fi
 
 # 注意：如果要卸载CUDA工具集，可以：
 # 运行位于 /usr/local/cuda-12.3/bin 目录下的 cuda-uninstaller
+
+# 设置SUMO环境变量
+if [ -d "/home/zmr466/2_GitProject/sumo/" ]; then
+    export SUMO_HOME=~/2_GitProject/sumo
+    export PYTHONPATH="$SUMO_HOME/tools:$PYTHONPATH"
+fi
+
+# 设置NJU--NEMU环境变量
+if [ -d "/home/zmr466/2_GitProject/ics2023/nemu/" ]; then
+    export NEMU_HOME=/home/zmr466/2_GitProject/ics2023/nemu
+    export AM_HOME=/home/zmr466/2_GitProject/ics2023/abstract-machine
+fi
+
+# 设置ccache的环境变量
+if [ -d "/usr/lib/ccache/" ]; then
+    export PATH=/usr/lib/ccache:$PATH
+fi
+
+# 设置Compiler Design相关变量
+export PATH=$PATH:/opt/cross-tools/bin:/opt/qemu-8.2/bin
+export LD_LIBRARY_PATH=/opt/cross-tools/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/cross-tools/loongarch64-linux-gnu/lib/:$LD_LIBRARY_PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# 设置RISCV的根目录
+export RISCV=~/riscv
+export PATH=$PATH:~/riscv/bin
+
+# 设置vcpkg的根目录
+export VCPKG_ROOT=~/bin/vcpkg
+export PATH=$PATH:~/bin/vcpkg
+
+
